@@ -1,0 +1,51 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #393d4f;
+    color: white;
+}
+
+.wrapper {
+    width: 1280px;
+    margin: 30px auto;
+    display: flow-root;
+    position: relative;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+}
+
+.listItem {
+    background: #242a3b;
+    padding: 12px;
+    border-radius: 7px;
+    color: orange;
+    text-decoration: none;
+}
+
+.listItem.file {
+    color: magenta;
+    text-decoration: none;
+}
+
+.listItem.dir {
+    color: white;
+    text-decoration: none;
+}
+
+#drivesList {
+    width: 100%;
+    font-size: 13pt;
+    background: #242a3b;
+    color: antiquewhite;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 10px;
+}
