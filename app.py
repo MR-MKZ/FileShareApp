@@ -61,8 +61,11 @@ def prev_dir():
 
 @app.route("/chdir/<path:dirpath>")
 def change_directory(dirpath):
-    cd(dirpath)
-    return redirect("/")
+    try:
+        cd(dirpath)
+        return redirect("/")
+    except PermissionError:
+        return render_template("error.html", error_title="Permission denied", error_description="Sorry but you don't have permission to open this folder")
 
 
 if __name__ == '__main__':
