@@ -6,10 +6,13 @@ from flask import Flask, render_template, redirect, send_from_directory
 
 
 def get_drives():
-    drives = []
-    for disk in psutil.disk_partitions():
-        drives.append(disk.mountpoint)
-    return drives
+    try:
+        drives = []
+        for disk in psutil.disk_partitions():
+            drives.append(disk.mountpoint)
+        return drives
+    except PermissionError:
+        return ["/"] if platform.system() == "Linux" else ["Not defined"]
 
 
 def cd(path):
