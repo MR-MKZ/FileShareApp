@@ -87,7 +87,7 @@ def download(filepath):
     filename = filepath.split("/")[-1]
     dir = filepath.split(filename)[0]
     try:
-        return send_from_directory(dir, filename)
+        return send_from_directory(dir if platform.system() == "Windows" else "/" + dir, filename)
     except PermissionError:
         return render_template("error.html", error_title="Permission denied",error_description="Sorry but you don't have permission to download this file!")
 
