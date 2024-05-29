@@ -73,8 +73,9 @@ def main_page():
 
         return render_template("main_page.html", dir_contents=dir_contents, drives=get_drives(), current_drive=os.getcwd().split("/")[0] + "\\" if platform.system() == "Windows" else "/" + os.getcwd().split("/")[1],current_path=os.getcwd())
     except FileNotFoundError:
-        current_file_path = os.path.abspath(__import__('inspect').getsourcefile(lambda: 0)).split("/").pop(-1)
-        cd(current_file_path)
+        current_file_path = os.path.abspath(__import__('inspect').getsourcefile(lambda: 0)).split("/")
+        del current_file_path[-1]
+        cd("\\".join(current_file_path)) if platform.system() == "Windows" else cd("/".join(current_file_path))
         return render_template("error.html", error_title="File not found error", error_description="requested file removed or you don't have system permission to see this folder")
 
 
