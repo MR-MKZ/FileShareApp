@@ -2,7 +2,7 @@ import os
 
 import psutil
 import platform
-from flask import Flask, render_template, redirect, send_from_directory
+from flask import Flask, render_template, redirect, send_from_directory, request
 
 
 def get_drives():
@@ -79,15 +79,20 @@ def main_page():
         return render_template("error.html", error_title="File not found error", error_description="requested file removed or you don't have system permission to see this folder")
 
 
-@app.route("/download/<path:filepath>")
-def download(filepath):
-    filename = filepath.split("/")[-1]
-    dir = filepath.split(filename)[0]
-    try:
-        return send_from_directory(dir, filename)
-    except PermissionError:
-        return render_template("error.html", error_title="Permission denied",
-                               error_description="Sorry but you don't have permission to download this file!")
+@app.route("/download")
+def download():
+    filepath = request.form['path']
+    if not filepath:
+        cd(filepath)
+        filename = filepath.split("/")[-1]
+        dir = filepath.split(filename)[0]
+        try:
+            return send_from_directory(dir, filename)
+        except PermissionError:
+            return render_template("error.html", error_title="Permission denied",
+                                   error_description="Sorry but you don't have permission to download this file!")
+    else:
+        return redirect("/")
 
 
 @app.route("/prev_dir")
@@ -103,10 +108,12 @@ def prev_dir():
         return redirect("/")
 
 
-@app.route("/chdir/<path:dirpath>")
-def change_directory(dirpath):
+@app.route("/chdir")
+def change_directory():
     try:
-        cd(dirpath)
+        dirpath = request.form['path']
+        if not dirpath:
+            cd(dirpath)
         return redirect("/")
     except PermissionError:
         return render_template("error.html", error_title="Permission denied",
