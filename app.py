@@ -53,25 +53,27 @@ app = Flask(__name__)
 
 @app.route('/')
 def main_page():
-    dir_contents = []
-    for i in os.scandir(os.getcwd()):
-        content_dic = {
-            "path": i.path,
-            "name": i.name,
-            "isDir": i.is_dir(),
-            "isFile": i.is_file(),
-            "isSymlink": i.is_symlink(),
-            "icon": "folder-icon" if i.is_dir() else file_icon(i.name)
-        }
-        dir_contents.append(content_dic)
+    try:
+        dir_contents = []
+        for i in os.scandir(os.getcwd()):
+            content_dic = {
+                "path": i.path,
+                "name": i.name,
+                "isDir": i.is_dir(),
+                "isFile": i.is_file(),
+                "isSymlink": i.is_symlink(),
+                "icon": "folder-icon" if i.is_dir() else file_icon(i.name)
+            }
+            dir_contents.append(content_dic)
 
-    if len(os.getcwd().replace("\\", "/").split("/")) > 1 and os.getcwd().replace("\\", "/").split("/")[1] != '':
-        dir_contents.insert(0, True)
-    else:
-        dir_contents.insert(0, False)
+        if len(os.getcwd().replace("\\", "/").split("/")) > 1 and os.getcwd().replace("\\", "/").split("/")[1] != '':
+            dir_contents.insert(0, True)
+        else:
+            dir_contents.insert(0, False)
 
-    return render_template("main_page.html", dir_contents=dir_contents, drives=get_drives(),
-                           current_drive=os.getcwd().split("/")[0] + "\\" if platform.system() == "Windows" else "/" + os.getcwd().split("/")[1], current_path=os.getcwd())
+        return render_template("main_page.html", dir_contents=dir_contents, drives=get_drives(), current_drive=os.getcwd().split("/")[0] + "\\" if platform.system() == "Windows" else "/" + os.getcwd().split("/")[1],current_path=os.getcwd())
+    except FileNotFoundError:
+        return render_template("error.html", error_title="File not found error", error_description="requested file removed or you don't have system permission to see this folder")
 
 
 @app.route("/download/<path:filepath>")
