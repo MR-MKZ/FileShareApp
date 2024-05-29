@@ -38,10 +38,12 @@ body {
     border-radius: 7px;
     color: orange;
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .listItem.file {
-    color: magenta;
+    color: white;
     text-decoration: none;
 }
 
@@ -68,6 +70,7 @@ body {
     position: sticky;
     top: 20px;
     backdrop-filter: blur(3px);
+    z-index: 1;
 }
 
 .pathContainer span {
@@ -87,4 +90,302 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+/* Icons Css */
+
+icon#pdf-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/pdf.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#pdf-icon:hover::after {
+    content: "PDF";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#text-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/text.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#text-icon:hover::after {
+    content: "Text";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#exe-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/exe.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#exe-icon:hover::after {
+    content: "exe";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#archive-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/archiveFolder.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#archive-icon:hover::after {
+    content: "Archive";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#folder-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/folder.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#folder-icon:hover::after {
+    content: "Folder";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#image-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/imageFile.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#image-icon:hover::after {
+    content: "Image";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#excel-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/microsoftExcel.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#excel-icon:hover::after {
+    content: "Excel";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#word-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/microsoftWord.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#word-icon:hover::after {
+    content: "Word";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#unknown-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/unknownFile.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#unknown-icon:hover::after {
+    content: "Unknown File";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#video-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/videoFile.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#video-icon:hover::after {
+    content: "Video";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#rar-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/winrar.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
+}
+
+icon#rar-icon:hover::after {
+    content: "rar";
+    width: max-content;
+    height: max-content;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 135%;
+    padding: 1px 10px;
+    box-sizing: border-box;
+    font-size: 10pt;
+    border-radius: 4px;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+}
+
+icon#back-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+    background: url("/static/icons/undo.svg");
+    background-size: cover;
+    margin-right: 10px;
+    position: relative;
 }
