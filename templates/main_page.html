@@ -11,8 +11,8 @@
         <select name="drives" id="drivesList">
             {% for drive in drives %}
                 {% if current_drive == drive %}
-                	<option value="{{ drive }}" selected>{{ drive }}</option>
-                 {% else %}
+                    <option value="{{ drive }}" selected>{{ drive }}</option>
+                {% else %}
                     <option value="{{ drive }}">{{ drive }}</option>
                 {% endif %}
             {% endfor %}
@@ -35,5 +35,7 @@
         {% endfor %}
     </div>
 </div>
+<script src="{{ url_for('static', filename='lib/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
