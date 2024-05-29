@@ -1,7 +1,7 @@
 import os
+import platform
 
 import psutil
-import platform
 from flask import Flask, render_template, redirect, send_from_directory
 
 
@@ -72,12 +72,14 @@ def main_page():
         else:
             dir_contents.insert(0, False)
 
-        return render_template("main_page.html", dir_contents=dir_contents, drives=get_drives(), current_drive=os.getcwd().split("/")[0] + "\\" if platform.system() == "Windows" else "/" + os.getcwd().split("/")[1],current_path=os.getcwd())
+        return render_template("main_page.html", dir_contents=dir_contents, drives=get_drives(),current_drive=os.getcwd().split("/")[0] + "\\" if platform.system() == "Windows" else "/" +os.getcwd().split("/")[1],current_path=os.getcwd())
+
     except FileNotFoundError:
         current_file_path = os.path.abspath(__import__('inspect').getsourcefile(lambda: 0)).split("/")
         del current_file_path[-1]
         cd("\\".join(current_file_path)) if platform.system() == "Windows" else cd("/".join(current_file_path))
-        return render_template("error.html", error_title="File not found error", error_description="requested file removed or you don't have system permission to see this folder")
+        return render_template("error.html", error_title="File not found error",
+                               error_description="requested file removed or you don't have system permission to see this folder")
 
 
 @app.route("/download/<path:filepath>")
@@ -87,8 +89,7 @@ def download(filepath):
     try:
         return send_from_directory(dir, filename)
     except PermissionError:
-        return render_template("error.html", error_title="Permission denied",
-                               error_description="Sorry but you don't have permission to download this file!")
+        return render_template("error.html", error_title="Permission denied",error_description="Sorry but you don't have permission to download this file!")
 
 
 @app.route("/prev_dir")
@@ -110,8 +111,7 @@ def change_directory(dirpath):
         cd(dirpath)
         return redirect("/")
     except PermissionError:
-        return render_template("error.html", error_title="Permission denied",
-                               error_description="Sorry but you don't have permission to open this folder")
+        return render_template("error.html", error_title="Permission denied",error_description="Sorry but you don't have permission to open this folder")
 
 
 if __name__ == '__main__':
