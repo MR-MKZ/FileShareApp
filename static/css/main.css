@@ -19,10 +19,11 @@ body {
 }
 
 .wrapper {
-    width: 1280px;
-    margin: 30px auto;
+    max-width: 1280px;
     display: flow-root;
-    position: relative;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 20px 20px 0 20px;
 }
 
 .listContainer {
@@ -38,7 +39,8 @@ body {
     border-radius: 7px;
     color: orange;
     text-decoration: none;
-    display: flex;
+    display: grid;
+    grid-template-columns: 35px 1fr;
     align-items: center;
 }
 

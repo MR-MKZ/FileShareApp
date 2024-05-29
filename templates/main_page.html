@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Share App | Mr.MKZ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
 </head>
 <body>
 <div class="wrapper">
@@ -19,7 +21,7 @@
         </select>
     </div>
     <div class="pathContainer">
-        <p>Current Location: <span>{{ current_path }}</span></p>
+        <span>{{ current_path }}</span>
     </div>
     <div class="listContainer">
         {% if dir_contents[0] %}

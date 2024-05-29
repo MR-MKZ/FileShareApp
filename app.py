@@ -1,8 +1,20 @@
 import os
 import platform
 
-import psutil
-from flask import Flask, render_template, redirect, send_from_directory
+try:
+    import psutil
+    from flask import Flask, render_template, redirect, send_from_directory
+except ModuleNotFoundError:
+    if platform.system() == "Windows":
+        os.system("pip install -r requirements.txt")
+    else:
+        try:
+            os.system("sudo pip install -r requirements.txt")
+        finally:
+            try:
+                os.system("sudo pip3 install -r requirements.txt")
+            finally:
+                print("Is pip installed on your system?")
 
 
 def get_drives():
@@ -72,7 +84,16 @@ def main_page():
         else:
             dir_contents.insert(0, False)
 
-        return render_template("main_page.html", dir_contents=dir_contents, drives=get_drives(),current_drive=os.getcwd().split("/")[0] + "\\" if platform.system() == "Windows" else "/" +os.getcwd().split("/")[1],current_path=os.getcwd())
+        if platform.system() == "Windows":
+            current_drive = os.getcwd().split("\\")[0] + "\\"
+        else:
+            current_drive = "/" + os.getcwd().split("/")[1]
+
+        return render_template("main_page.html",
+                               dir_contents=dir_contents,
+                               drives=get_drives(),
+                               current_drive=current_drive,
+                               current_path=os.getcwd())
 
     except FileNotFoundError:
         current_file_path = os.path.abspath(__import__('inspect').getsourcefile(lambda: 0)).split("/")
@@ -89,7 +110,8 @@ def download(filepath):
     try:
         return send_from_directory(dir if platform.system() == "Windows" else "/" + dir, filename)
     except PermissionError:
-        return render_template("error.html", error_title="Permission denied",error_description="Sorry but you don't have permission to download this file!")
+        return render_template("error.html", error_title="Permission denied",
+                               error_description="Sorry but you don't have permission to download this file!")
 
 
 @app.route("/prev_dir")
@@ -111,7 +133,9 @@ def change_directory(dirpath):
         cd(dirpath)
         return redirect("/")
     except PermissionError:
-        return render_template("error.html", error_title="Permission denied",error_description="Sorry but you don't have permission to open this folder")
+        return render_template("error.html",
+                               error_title="Permission denied",
+                               error_description="Sorry but you don't have permission to open this folder")
 
 
 if __name__ == '__main__':
