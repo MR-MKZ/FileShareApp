@@ -17,7 +17,7 @@ def get_drives():
 
 def cd(path):
     print(path)
-    os.chdir(path)
+    os.chdir(path if platform.system() == "Windows" else "/" + path)
     return os.getcwd()
 
 
