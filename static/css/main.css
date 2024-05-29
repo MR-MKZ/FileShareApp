@@ -4,11 +4,11 @@
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('../fonts/Poppins/Poppins-Regular.ttf') format('truetype'),
-       url('../fonts/Poppins/Poppins-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-Regular.ttf') format('truetype'),
+    url('../fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 body {
@@ -72,4 +72,19 @@ body {
 
 .pathContainer span {
     color: gold;
+}
+
+.backBtn {
+    background: #0064ff;
+    border-radius: 7px;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    width: max-content;
+}
+
+.errorConainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

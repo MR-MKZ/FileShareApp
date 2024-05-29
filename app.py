@@ -45,7 +45,7 @@ def download(filepath):
     try:
         return send_from_directory(dir, filename)
     except PermissionError:
-        return redirect("/")
+        return render_template("error.html", error_title="Permission denied", error_description="Sorry but you don't have permission to download this file!")
 
 @app.route("/prev_dir")
 def prev_dir():

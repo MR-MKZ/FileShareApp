@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ error_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<div class="wrapper">
+    <div class="errorConainer">
+        <h1>{{ error_title }}</h1>
+        <p>{{ error_description }}</p>
+        <a class="backBtn" href="/">Go back</a>
+    </div>
+</div>
+</body>
+</html>
