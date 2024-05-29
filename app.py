@@ -35,7 +35,7 @@ def main_page():
     else:
         dir_contents.insert(0, False)
 
-    return render_template("main_page.html", dir_contents=dir_contents, drives=get_drives(), current_drive=os.getcwd().split("\\")[0] + "\\")
+    return render_template("main_page.html", dir_contents=dir_contents, drives=get_drives(), current_drive=os.getcwd().split("\\")[0] + "\\", current_path=os.getcwd())
 
 
 @app.route("/download/<path:filepath>")

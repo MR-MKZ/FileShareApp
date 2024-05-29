@@ -18,6 +18,9 @@
             {% endfor %}
         </select>
     </div>
+    <div class="pathContainer">
+        <p>Current Location: <span>{{ current_path }}</span></p>
+    </div>
     <div class="listContainer">
         {% if dir_contents[0] %}
             <a class="listItem" href="/prev_dir">.. Previous directory</a>
