@@ -69,13 +69,31 @@ def main_page():
     try:
         dir_contents = []
         for i in os.scandir(os.getcwd()):
+            preview_types = ["mp4",
+                         "mkv",
+                         "avi",
+                         "flv",
+                         "webm",
+                         "wmv",
+                         "png",
+                         "jpg",
+                         "jpeg",
+                         "gif"]
+            file_extension = i.name.split(".")[-1]
+
+            if file_extension in preview_types:
+                has_preview = True
+            else:
+                has_preview = False
+
             content_dic = {
                 "path": i.path,
                 "name": i.name,
                 "isDir": i.is_dir(),
                 "isFile": i.is_file(),
                 "isSymlink": i.is_symlink(),
-                "icon": "folder-icon" if i.is_dir() else file_icon(i.name)
+                "icon": "folder-icon" if i.is_dir() else file_icon(i.name),
+                "preview": has_preview
             }
             dir_contents.append(content_dic)
 

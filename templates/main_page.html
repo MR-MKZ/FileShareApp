@@ -25,18 +25,38 @@
     </div>
     <div class="listContainer">
         {% if dir_contents[0] %}
-            <a class="listItem" href="/prev_dir"><icon id="back-icon"></icon>Previous directory</a>
+            <a class="listItem" href="/prev_dir">
+                <icon id="back-icon"></icon>
+                Previous directory</a>
         {% endif %}
         {% for dir_content in dir_contents[1::] %}
             {% if dir_content.isDir %}
-                <a class="listItem dir" href="/chdir/{{ dir_content.path }}"><icon id="{{ dir_content.icon }}"></icon>{{ dir_content.name }}</a>
+                <a class="listItem dir" href="/chdir/{{ dir_content.path }}">
+                    <icon id="{{ dir_content.icon }}"></icon>
+                    {{ dir_content.name }}</a>
             {% endif %}
             {% if dir_content.isFile %}
-                <a class="listItem file" href="/download/{{ dir_content.path }}"><icon id="{{ dir_content.icon }}"></icon>{{ dir_content.name }}</a>
+                <div>
+                    <a class="listItem file" href="/download/{{ dir_content.path }}">
+                        <icon id="{{ dir_content.icon }}"></icon>
+                        {{ dir_content.name }}
+                    </a>
+                    {% if dir_content.preview %}
+                        <button class="showPreview" name="{{ dir_content.name }}"
+                                src="/download/{{ dir_content.path }}">
+                            Preview
+                        </button>
+                    {% endif %}
+                </div>
             {% endif %}
         {% endfor %}
     </div>
+    <div class="Modal" style="display: none">
+        <video style="display: none" src="" controls></video>
+        <img style="display: none" src="" alt="">
+    </div>
 </div>
+<div class="backward" style="display: none"></div>
 <script src="{{ url_for('static', filename='lib/jquery-3.7.1.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
