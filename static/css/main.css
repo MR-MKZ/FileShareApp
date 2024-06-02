@@ -53,8 +53,14 @@ body {
     color: orange;
     text-decoration: none;
     display: grid;
-    grid-template-columns: 35px 1fr;
+    grid-template-columns: 35px 1fr .1fr;
+    column-gap: 10px;
     align-items: center;
+}
+
+.listItem a {
+    color: white;
+    text-decoration: none;
 }
 
 .listItem.file {
@@ -107,6 +113,34 @@ body {
     gap: 10px;
 }
 
+.showPreview {
+    background: #0082ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.notifContainer {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #3e3e3e;
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 235px;
+    /*transition: 1s all cubic-bezier(0.18, 0.89, 0.32, 1.28);*/
+    transition: 1s all ease;
+    z-index: 10;
+    user-select: none;
+}
+
+.notifContainer.show {
+    bottom: 30px;
+}
+
 /* Icons Css */
 
 icon#pdf-icon {
@@ -115,7 +149,7 @@ icon#pdf-icon {
     display: block;
     background: url("/static/icons/pdf.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -141,7 +175,7 @@ icon#text-icon {
     display: block;
     background: url("/static/icons/text.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -167,7 +201,7 @@ icon#exe-icon {
     display: block;
     background: url("/static/icons/exe.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -193,7 +227,7 @@ icon#archive-icon {
     display: block;
     background: url("/static/icons/archiveFolder.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -219,7 +253,7 @@ icon#folder-icon {
     display: block;
     background: url("/static/icons/folder.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -245,7 +279,7 @@ icon#image-icon {
     display: block;
     background: url("/static/icons/imageFile.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -271,7 +305,7 @@ icon#excel-icon {
     display: block;
     background: url("/static/icons/microsoftExcel.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -297,7 +331,7 @@ icon#word-icon {
     display: block;
     background: url("/static/icons/microsoftWord.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -323,7 +357,7 @@ icon#unknown-icon {
     display: block;
     background: url("/static/icons/unknownFile.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -349,7 +383,7 @@ icon#video-icon {
     display: block;
     background: url("/static/icons/videoFile.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -375,7 +409,7 @@ icon#rar-icon {
     display: block;
     background: url("/static/icons/winrar.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -401,7 +435,7 @@ icon#back-icon {
     display: block;
     background: url("/static/icons/undo.svg");
     background-size: cover;
-    margin-right: 10px;
+    margin: 0 auto;
     position: relative;
 }
 

@@ -21,6 +21,7 @@ $(() => {
             $(".backward").fadeIn()
             $(".Modal").fadeIn();
         }
+        showNotification("Click outside the preview box to exit from preview mode.")
     })
 
     $(".backward").click(function (){
@@ -49,4 +50,12 @@ const isImage = (extension) => {
 
 const isVideo = (extension) => {
   return videoExtensions.indexOf(extension) > -1;
+}
+
+const showNotification = (message) => {
+    $(".notifContainer p").text(message)
+    $(".notifContainer").addClass("show")
+    setTimeout(() => {
+        $(".notifContainer").removeClass("show")
+    }, 4000)
 }

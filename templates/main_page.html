@@ -27,33 +27,36 @@
         {% if dir_contents[0] %}
             <a class="listItem" href="/prev_dir">
                 <icon id="back-icon"></icon>
-                Previous directory</a>
+                Previous directory
+            </a>
         {% endif %}
         {% for dir_content in dir_contents[1::] %}
             {% if dir_content.isDir %}
-                <a class="listItem dir" href="/chdir/{{ dir_content.path }}">
+                <span class="listItem dir">
                     <icon id="{{ dir_content.icon }}"></icon>
-                    {{ dir_content.name }}</a>
+                <a href="/chdir/{{ dir_content.path }}">{{ dir_content.name }}</a>
+                </span>
             {% endif %}
             {% if dir_content.isFile %}
-                <div>
-                    <a class="listItem file" href="/download/{{ dir_content.path }}">
+                <span class="listItem file">
                         <icon id="{{ dir_content.icon }}"></icon>
-                        {{ dir_content.name }}
-                    </a>
+                        <a href="/download/{{ dir_content.path }}">{{ dir_content.name }}</a>
                     {% if dir_content.preview %}
                         <button class="showPreview" name="{{ dir_content.name }}"
                                 src="/download/{{ dir_content.path }}">
                             Preview
                         </button>
                     {% endif %}
-                </div>
+                </span>
             {% endif %}
         {% endfor %}
     </div>
     <div class="Modal" style="display: none">
         <video style="display: none" src="" controls></video>
         <img style="display: none" src="" alt="">
+    </div>
+    <div class="notifContainer">
+        <p></p>
     </div>
 </div>
 <div class="backward" style="display: none"></div>
