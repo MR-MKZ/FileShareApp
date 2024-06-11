@@ -68,7 +68,9 @@ app = Flask(__name__)
 def main_page():
     try:
         dir_contents = []
-        for i in os.scandir(os.getcwd()):
+        entries = os.scandir(os.getcwd())
+        sorted_entries = sorted(entries, key=lambda entry: entry.name)
+        for i in sorted_entries:
             preview_types = ["mp4",
                          "mkv",
                          "avi",
