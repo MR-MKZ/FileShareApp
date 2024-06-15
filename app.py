@@ -1,5 +1,6 @@
 import os
 import platform
+import socket
 
 try:
     import psutil
@@ -28,7 +29,6 @@ def get_drives():
 
 
 def cd(path):
-    print(path)
     os.chdir(path if platform.system() == "Windows" else "/" + path)
     return os.getcwd()
 
@@ -137,7 +137,6 @@ def download(filepath):
 @app.route("/prev_dir")
 def prev_dir():
     prev_path = os.getcwd().replace("\\", "/").split("/")
-    print(len(prev_path) > 1 and prev_path[1] != '')
     if len(prev_path) > 1 and prev_path[1] != '':
         del prev_path[-1]
         if len(prev_path) > 1:
@@ -159,4 +158,8 @@ def change_directory(dirpath):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000, host="0.0.0.0")
+    HOST = socket.gethostname()
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    IP = s.getsockname()[0]
+    app.run(debug=True, port=8000, host=IP)
