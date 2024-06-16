@@ -162,4 +162,5 @@ if __name__ == '__main__':
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     IP = s.getsockname()[0]
-    app.run(debug=True, port=8000, host=IP)
+    print(f'Enter http://{IP}:8000 in your browser')
+    app.run(debug=False, port=8000, host="0.0.0.0")
