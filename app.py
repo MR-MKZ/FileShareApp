@@ -1,6 +1,5 @@
 import os
 import platform
-import socket
 
 try:
     import psutil
@@ -158,9 +157,12 @@ def change_directory(dirpath):
 
 
 if __name__ == '__main__':
-    HOST = socket.gethostname()
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    IP = s.getsockname()[0]
-    print(f'Enter http://{IP}:8000 in your browser')
-    app.run(debug=False, port=8000, host="0.0.0.0")
+    # HOST = socket.gethostname()
+    # s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    # s.connect(("8.8.8.8", 80))
+    # IP = s.getsockname()[0]
+    # print(f'Enter http://{IP}:8000 in your browser')
+    try:
+        app.run(debug=True, port=8000, host="0.0.0.0")
+    except:
+        app.run(debug=True, port=8000, host="127.0.0.1")
