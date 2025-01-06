@@ -20,8 +20,13 @@
             {% endfor %}
         </select>
     </div>
-    <div class="pathContainer">
-        <span>{{ current_path }}</span>
+    <div class="box">
+        <div class="pathContainer">
+            <span>{{ current_path }}</span>
+        </div>
+        <div class="linksContainer">
+            <button onclick="copyAllLinks()">Copy Links</button>
+        </div>
     </div>
     <div class="listContainer">
         {% if dir_contents[0] %}
@@ -40,7 +45,7 @@
             {% if dir_content.isFile %}
                 <span class="listItem file">
                         <icon id="{{ dir_content.icon }}"></icon>
-                        <a href="/download/{{ dir_content.path }}">{{ dir_content.name }}</a>
+                        <a class="fileItem" href="/download/{{ dir_content.path }}">{{ dir_content.name }}</a>
                     {% if dir_content.preview %}
                         <button class="showPreview" name="{{ dir_content.name }}"
                                 src="/download/{{ dir_content.path }}">

@@ -83,15 +83,35 @@ body {
     padding: 12px;
 }
 
-.pathContainer {
-    background: #56585fa6;
+.box {
     margin-bottom: 20px;
-    border-radius: 7px;
-    padding: 12px;
     position: sticky;
     top: 20px;
-    backdrop-filter: blur(3px);
     z-index: 1;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 100px;
+}
+
+.box * {
+    border-radius: 7px;
+}
+
+.pathContainer {
+    background: #56585fa6;
+    padding: 12px;
+    backdrop-filter: blur(3px);
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.linksContainer button {
+    border: none;
+    background-color: #0064ff;
+    height: 100%;
+    width: 100%;
+    color: white;
+    cursor: pointer;
 }
 
 .pathContainer span {
